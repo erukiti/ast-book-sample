@@ -13,7 +13,5 @@ const plugin = ({types: t}) => ({
   }
 })
 
-
-
 const {code} = transform(src, {plugins: [plugin]})
 console.log(code) // --> 1 * 2;
