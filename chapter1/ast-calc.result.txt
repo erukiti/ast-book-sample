@@ -1,0 +1,29 @@
+enter: File '1 + 2 * (3 + 4)'
+enter: Program '1 + 2 * (3 + 4)'
+  enter: ExpressionStatement '1 + 2 * (3 + 4)'
+    enter: BinaryExpression '1 + 2 * (3 + 4)'
+      enter: NumericLiteral '1'
+      exit:  NumericLiteral '1'
+        value: 1
+      enter: BinaryExpression '2 * (3 + 4)'
+        enter: NumericLiteral '2'
+        exit:  NumericLiteral '2'
+          value: 2
+        enter: BinaryExpression '3 + 4'
+          enter: NumericLiteral '3'
+          exit:  NumericLiteral '3'
+            value: 3
+          enter: NumericLiteral '4'
+          exit:  NumericLiteral '4'
+            value: 4
+        exit:  BinaryExpression '3 + 4'
+         3 + 4
+      exit:  BinaryExpression '2 * (3 + 4)'
+       2 * 7
+    exit:  BinaryExpression '1 + 2 * (3 + 4)'
+     1 + 14
+  exit:  ExpressionStatement '1 + 2 * (3 + 4)'
+exit:  Program '1 + 2 * (3 + 4)'
+exit:  File '1 + 2 * (3 + 4)'
+
+1 + 2 * (3 + 4) = 15

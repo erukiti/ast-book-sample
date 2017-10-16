@@ -1,0 +1,15 @@
+enter: Program
+enter: ExpressionStatement
+enter: BinaryExpression
+BinaryExpression enter
+enter: NumericLiteral
+NumericLiteral enter
+exit:  NumericLiteral
+NumericLiteral exit
+enter: NumericLiteral
+NumericLiteral enter
+exit:  NumericLiteral
+NumericLiteral exit
+exit:  BinaryExpression
+exit:  ExpressionStatement
+exit:  Program
