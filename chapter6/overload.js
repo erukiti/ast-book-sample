@@ -120,7 +120,6 @@ const overloadPlugin = ({types: t}) => {
 const {code, ast, map} = transformFileSync(path.join(__dirname, 'fraction.js'), {
   plugins: [[overloadPlugin, {overloadClasses: ['Fraction']}], stripType],
 })
-// const {code: code2} = transformFromAst(ast, {plugins: [], sourceMaps: map})
 console.log(code)
 console.log('')
 eval(code)
