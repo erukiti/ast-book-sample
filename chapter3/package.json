@@ -1,0 +1,13 @@
+{
+    "name": "babel-plugin-sample-di",
+    "version": "0.1.0",
+    "description": "Babel plugin sample",
+    "main": "src/index.js",
+    "scripts": {
+    },
+    "keywords": ["babel", "plugin"],
+    "repository": {
+    },
+    "author": "",
+    "license": ""
+  }
