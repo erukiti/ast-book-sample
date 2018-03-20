@@ -1,5 +1,5 @@
 const {parse} = require('babylon')
-const traverse = require('babel-traverse').default
+const traverse = require('@babel/traverse').default
 
 const src = '1 + 2'
 

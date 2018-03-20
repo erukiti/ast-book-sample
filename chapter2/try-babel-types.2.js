@@ -1,6 +1,6 @@
 const {parse} = require('babylon')
-const traverse = require('babel-traverse').default
-const t = require('babel-types')
+const traverse = require('@babel/traverse').default
+const t = require('@babel/types')
 
 const src = '1 + 2'
 const ast = parse(src)

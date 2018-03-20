@@ -1,4 +1,4 @@
-const {transform} = require('babel-core')
+const {transform} = require('@babel/core')
 
 const source = 'function hoge() {return 1}'
 

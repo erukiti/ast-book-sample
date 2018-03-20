@@ -1,4 +1,6 @@
-const {transform} = require('babel-core')
+const {transform} = require('@babel/core')
+
+const WasCreated = Symbol('WasCreated')
 
 const source = `
 const a = 1 + 2 * 3 / 4
@@ -8,15 +10,6 @@ console.log(b)
 `
 
 const optimizePlugin = ({types: t}) => {
-  const toLiterals = {
-    string: value => t.stringLiteral(value),
-    number: value => t.numericLiteral(value),
-    boolean: value => t.booleanLiteral(value),
-    null: value => t.nullLiteral(),
-  }
-
-  const valueToLiteral = value => toLiterals[typeof value](value)
-
   const searchPrevNodes = (nodePath, conditionPaths) => {
     const statement = nodePath.getStatementParent()
     if (!statement) {
@@ -31,14 +24,15 @@ const optimizePlugin = ({types: t}) => {
 
   const evaluateVisitor = {
     exit: nodePath => {
-      if (t.isImmutable(nodePath.node)) {
+      if (t.isImmutable(nodePath.node) || nodePath[WasCreated]) {
         return
       }
 
       nodePath.scope.crawl()
       const {confident, value} = nodePath.evaluate()
       if (confident) {
-        nodePath.replaceWith(valueToLiteral(value))
+        nodePath.replaceWith(t.valueToNode(value))
+        nodePath[WasCreated] = true
       }
     },
     ReferencedIdentifier: nodePath => {
@@ -52,7 +46,8 @@ const optimizePlugin = ({types: t}) => {
         }
         const {confident, value} = binding.path.get('init').evaluate()
         if (confident) {
-          nodePath.replaceWith(valueToLiteral(value))
+          nodePath.replaceWith(t.valueToNode(value))
+          nodePath[WasCreated] = true
         }
       }
     },

@@ -1,9 +1,9 @@
 const path = require('path')
 
-const {transformFileSync} = require('babel-core')
-// const syntaxTypeScript = require('babel-plugin-syntax-typescript').default
-const syntaxFlow = require('babel-plugin-syntax-flow')
-const stripType = require('babel-plugin-transform-flow-strip-types')
+const {transformFileSync} = require('@babel/core')
+// const syntaxTypeScript = require('@babel/plugin-syntax-typescript').default
+const syntaxFlow = require('@babel/plugin-syntax-flow').default
+const stripType = require('@babel/plugin-transform-flow-strip-types').default
 
 const WasCreated = Symbol('WasCreated')
 

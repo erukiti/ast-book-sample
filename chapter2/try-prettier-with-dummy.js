@@ -1,5 +1,5 @@
 const prettier = require('prettier')
-const {transformFromAst} = require('babel-core')
+const {transformFromAst} = require('@babel/core')
 
 const rawAst = {
   type: 'Program',

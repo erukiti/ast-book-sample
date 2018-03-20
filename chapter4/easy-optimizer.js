@@ -1,33 +1,24 @@
-const {transform} = require('babel-core')
+const {transform} = require('@babel/core')
+
+const WasCreated = Symbol('WasCreated')
 
 const optimizePlugin = ({types: t}) => {
-  const toLiterals = {
-    string: value => t.stringLiteral(value),
-    number: value => t.numericLiteral(value),
-    boolean: value => t.booleanLiteral(value),
-    null: value => t.nullLiteral(),
-  }
-
-  const valueToLiteral = value => toLiterals[typeof value](value)
-
   const evaluateVisitor = {
     exit: (nodePath) => {
-      if (t.isImmutable(nodePath.node)) {
+      if (t.isImmutable(nodePath.node) || nodePath[WasCreated]) {
         return
       }
 
       const {confident, value} = nodePath.evaluate()
-      if (confident && typeof value !== 'object') {
-        nodePath.replaceWith(valueToLiteral(value))
+      if (confident) {
+        nodePath.replaceWith(t.valueToNode(value))
+        nodePath[WasCreated] = true
       }
     },
   }
 
   return {
     visitor: {
-      exit: (nodePath) => {
-
-      },
       Program: (nodePath) => {
         nodePath.traverse(evaluateVisitor)
       },

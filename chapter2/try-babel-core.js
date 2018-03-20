@@ -1,4 +1,4 @@
-const {transform} = require('babel-core')
+const {transform} = require('@babel/core')
 
 const sourceCode = '1 + 2'
 const opts = {plugins: []}

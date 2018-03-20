@@ -1,5 +1,5 @@
-const {transform} = require('babel-core')
 const prettier = require('prettier')
+const {transform} = require('@babel/core')
 
 const src = 'console.log("hoge");'
 

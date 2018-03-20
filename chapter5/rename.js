@@ -1,4 +1,4 @@
-const {transform} = require('babel-core')
+const {transform} = require('@babel/core')
 
 const src = `
 const hoge = () => 1

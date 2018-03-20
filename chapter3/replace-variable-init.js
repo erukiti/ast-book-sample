@@ -1,4 +1,4 @@
-const {transform} = require('babel-core')
+const {transform} = require('@babel/core')
 const {parseExpression} = require('babylon')
 
 const source = 'const hoge = require("hoge")'

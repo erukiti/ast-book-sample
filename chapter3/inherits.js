@@ -1,5 +1,5 @@
-const {transform} = require('babel-core')
-const syntaxTypeScript = require('babel-plugin-syntax-typescript').default
+const {transform} = require('@babel/core')
+const syntaxTypeScript = require('@babel/plugin-syntax-syntaxTypeScript').default
 
 const plugin = babel => {
   return {

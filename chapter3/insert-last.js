@@ -1,4 +1,4 @@
-const {transform} = require('babel-core')
+const {transform} = require('@babel/core')
 
 const source = 'console.log(1)'
 
